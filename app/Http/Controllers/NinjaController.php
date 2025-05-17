@@ -14,16 +14,12 @@ class NinjaController extends Controller
     }
 
     public function show($id) {
+        $ninja = Ninja::findOrFail($id); // findOrFail serves a 404 Error if it fails to find the record
 
+        return view('ninjas.show', ['ninja' => $ninja]);
     }
 
     public function create() {
-
+        return view('ninjas.create');
     }
-
-    public function store() {
-
-    }
-
-
 }

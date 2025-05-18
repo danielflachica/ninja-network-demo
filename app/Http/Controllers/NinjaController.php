@@ -15,8 +15,9 @@ class NinjaController extends Controller
         return view('ninjas.index', ['ninjas' => $ninjas]);
     }
 
-    public function show($id) {
-        $ninja = Ninja::with('dojo')->findOrFail($id); // findOrFail serves a 404 Error if it fails to find the record
+    public function show(Ninja $ninja) {
+        // $ninja = Ninja::with('dojo')->findOrFail($id); // findOrFail serves a 404 Error if it fails to find the record
+        $ninja->load('dojo'); // Route-model binding ::with('dojo')
 
         return view('ninjas.show', ['ninja' => $ninja]);
     }
@@ -40,8 +41,7 @@ class NinjaController extends Controller
         return redirect()->route('ninjas.index')->with('success', 'Ninja created!');
     }
 
-    public function destroy($id) {
-        $ninja = Ninja::findOrFail($id);
+    public function destroy(Ninja $ninja) {
         $ninja->delete();
 
         return redirect()->route('ninjas.index')->with('success', 'Ninja deleted!');

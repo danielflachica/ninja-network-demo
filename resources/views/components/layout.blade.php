@@ -15,6 +15,8 @@
             <div>
                 <a href="{{ route('ninjas.index') }}">All Ninjas</a>
                 <a href="{{ route('ninjas.create') }}">Create New Ninja</a>
+                <a href="{{ route('show.login') }}" class="btn">Login</a>
+                <a href="{{ route('show.register') }}" class="btn">Register</a>
             </div>
         </nav>
     </header>

@@ -37,4 +37,15 @@ class AuthController extends Controller
     {
 
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        // Remove ALL data from the session, not just user-data
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('show.login');
+    }
 }

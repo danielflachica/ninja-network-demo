@@ -75,3 +75,6 @@ select {
     appearance: none;
     @apply bg-white;
 }
+input {
+    @apply bg-white;
+}
